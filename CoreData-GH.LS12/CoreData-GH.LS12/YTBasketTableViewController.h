@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  YTBasketTableViewController.h
 //  CoreData-GH.LS12
 //
 //  Created by Yuriy T on 06.02.16.
@@ -8,9 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
+@interface YTBasketTableViewController : UITableViewController
 
 @end
-
