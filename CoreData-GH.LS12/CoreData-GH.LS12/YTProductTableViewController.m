@@ -10,6 +10,7 @@
 #import "YTDBManager.h"
 #import "YTProductViewController.h"
 #import "YTProduct.h"
+#import "YTProductCell.h"
 
 @interface YTProductTableViewController ()
 
@@ -79,10 +80,11 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"product_cell" forIndexPath:indexPath];
-    
+    YTProductCell *cell = [tableView dequeueReusableCellWithIdentifier:@"product_cell" forIndexPath:indexPath];
+
     YTProduct *product = [self.products objectAtIndex:indexPath.row];
-    cell.textLabel.text = product.title;
+    cell.productTileLabel.text = product.title;
+    cell.productDescriptionLabel.text = [NSString stringWithFormat:@"amount %i x price $%.2f = $%.2f", [product.amount intValue], [product.price floatValue], ([product.amount intValue] * [product.price floatValue])];
     
     return cell;
 }

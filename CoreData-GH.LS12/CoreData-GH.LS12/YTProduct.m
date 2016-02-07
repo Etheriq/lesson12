@@ -23,5 +23,14 @@
      return YES;
  }
 
+- (BOOL) validatePrice:(id  _Nullable __autoreleasing *)value error:(NSError * _Nullable __autoreleasing *)error {
+    
+    if ([*value floatValue] <= 0.0) {
+        *error = [NSError errorWithDomain:@"Product price must be more zero" code:102 userInfo:nil];
+        return NO;
+    }
+    
+    return YES;
+}
 
 @end

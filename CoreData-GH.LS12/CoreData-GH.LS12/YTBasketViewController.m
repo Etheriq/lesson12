@@ -36,16 +36,34 @@
 
 - (IBAction)createBascket:(UIButton *)sender {
    
+    YTBasket *bascket = nil;
     NSManagedObjectContext *context = [YTDBManager Manager].managedObjectContext;
     
-    YTBasket *bascket = [NSEntityDescription insertNewObjectForEntityForName:[[YTBasket class] description] inManagedObjectContext:context];
+    bascket = [NSEntityDescription insertNewObjectForEntityForName:[[YTBasket class] description] inManagedObjectContext:context];
     bascket.title = self.titleField.text;
     bascket.createdAt = self.createdDatePicker.date;
     
-    [[YTDBManager Manager] saveContext];
-    
-    [self.navigationController popViewControllerAnimated:YES];
+    NSError *error = nil;
+    if ([context save:&error] == NO) {
+        
+        [self showAlertWithError:error];
+        error = nil;
+    } else {
+        
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
+#pragma mark - Error handle
+
+- (void)showAlertWithError:(NSError *) error {
+    
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Could Not Save Data"
+                                                        message:[NSString stringWithFormat:@"%@", error.domain]
+                                                       delegate:self
+                                              cancelButtonTitle:@"Ok"
+                                              otherButtonTitles:nil];
+    [alertView show];
+}
 
 @end

@@ -174,13 +174,39 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="product_cell" id="rqN-nA-uDX">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="product_cell" id="rqN-nA-uDX" customClass="YTProductCell">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rqN-nA-uDX" id="Qcb-co-NGz">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product tile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JU7-P6-TgG">
+                                            <rect key="frame" x="8" y="0.0" width="464" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="price, amount and total cost" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c1h-Ua-iA9">
+                                            <rect key="frame" x="8" y="24" width="464" height="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.39459260471204194" green="0.39459260471204194" blue="0.39459260471204194" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="JU7-P6-TgG" secondAttribute="trailing" constant="120" id="56o-eu-II6"/>
+                                        <constraint firstItem="c1h-Ua-iA9" firstAttribute="leading" secondItem="Qcb-co-NGz" secondAttribute="leadingMargin" id="K6z-Hq-MoX"/>
+                                        <constraint firstItem="JU7-P6-TgG" firstAttribute="leading" secondItem="Qcb-co-NGz" secondAttribute="leadingMargin" id="Ns9-0y-Rtq"/>
+                                        <constraint firstItem="c1h-Ua-iA9" firstAttribute="top" secondItem="JU7-P6-TgG" secondAttribute="bottom" constant="3" id="nK1-yr-Fnb"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="c1h-Ua-iA9" secondAttribute="trailing" constant="120" id="vmw-YJ-o2H"/>
+                                        <constraint firstItem="JU7-P6-TgG" firstAttribute="top" secondItem="Qcb-co-NGz" secondAttribute="topMargin" constant="-8" id="xCl-Wv-4sF"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="productDescriptionLabel" destination="c1h-Ua-iA9" id="9Jt-IN-nBN"/>
+                                    <outlet property="productTileLabel" destination="JU7-P6-TgG" id="TE3-tZ-DVZ"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
