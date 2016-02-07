@@ -58,6 +58,38 @@
     }
 }
 
+- (NSArray *) getProductsInBasketWithId:(NSManagedObjectID *) objectId {
+    
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    NSEntityDescription *description = [NSEntityDescription entityForName:@"YTProduct" inManagedObjectContext:self.managedObjectContext];
+    [request setEntity:description];
+    [request setFetchBatchSize:25];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"basket = %@", objectId];
+    [request setPredicate:predicate];
+    
+    NSSortDescriptor *sortByTitle = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES];
+    [request setSortDescriptors:@[sortByTitle]];
+    
+    NSError *error = nil;
+    NSArray *result = nil;
+    if (!(result = [self.managedObjectContext executeFetchRequest:request error:&error])) {
+        NSLog(@"GetAll error: %@", [error localizedDescription]);
+    }
+    
+    return result;
+    
+    /*
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:[[CDProduct class] description]];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"basket = %@", self.basket.objectID];
+    request.predicate = predicate;
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+    request.sortDescriptors = @[sortDescriptor];
+    return [context executeFetchRequest:request error:nil];
+    */
+    
+}
+
 #pragma mark - Core Data stack
 
 @synthesize managedObjectContext = _managedObjectContext;

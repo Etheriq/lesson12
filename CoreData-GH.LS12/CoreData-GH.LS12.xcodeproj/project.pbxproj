@@ -21,6 +21,8 @@
 		290633C31C662842007DFFA6 /* YTBasketTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 290633C21C662842007DFFA6 /* YTBasketTableViewController.m */; };
 		290633C71C6640CA007DFFA6 /* YTBascketCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 290633C61C6640CA007DFFA6 /* YTBascketCell.m */; };
 		2951025F1C6651CF00528E50 /* YTBasketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2951025E1C6651CF00528E50 /* YTBasketViewController.m */; };
+		29E057671C66BB440055105D /* YTProductTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29E057661C66BB440055105D /* YTProductTableViewController.m */; };
+		29E0576A1C66C5660055105D /* YTProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29E057691C66C5660055105D /* YTProductViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +51,10 @@
 		290633C61C6640CA007DFFA6 /* YTBascketCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTBascketCell.m; sourceTree = "<group>"; };
 		2951025D1C6651CF00528E50 /* YTBasketViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTBasketViewController.h; sourceTree = "<group>"; };
 		2951025E1C6651CF00528E50 /* YTBasketViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTBasketViewController.m; sourceTree = "<group>"; };
+		29E057651C66BB440055105D /* YTProductTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTProductTableViewController.h; sourceTree = "<group>"; };
+		29E057661C66BB440055105D /* YTProductTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTProductTableViewController.m; sourceTree = "<group>"; };
+		29E057681C66C5660055105D /* YTProductViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTProductViewController.h; sourceTree = "<group>"; };
+		29E057691C66C5660055105D /* YTProductViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTProductViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +142,10 @@
 				290633C21C662842007DFFA6 /* YTBasketTableViewController.m */,
 				2951025D1C6651CF00528E50 /* YTBasketViewController.h */,
 				2951025E1C6651CF00528E50 /* YTBasketViewController.m */,
+				29E057651C66BB440055105D /* YTProductTableViewController.h */,
+				29E057661C66BB440055105D /* YTProductTableViewController.m */,
+				29E057681C66C5660055105D /* YTProductViewController.h */,
+				29E057691C66C5660055105D /* YTProductViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -223,6 +233,8 @@
 			files = (
 				290633BD1C661CF1007DFFA6 /* YTProduct.m in Sources */,
 				290633BE1C661CF1007DFFA6 /* YTBasket+CoreDataProperties.m in Sources */,
+				29E0576A1C66C5660055105D /* YTProductViewController.m in Sources */,
+				29E057671C66BB440055105D /* YTProductTableViewController.m in Sources */,
 				2906339A1C6603C3007DFFA6 /* AppDelegate.m in Sources */,
 				290633BC1C661CF1007DFFA6 /* YTProduct+CoreDataProperties.m in Sources */,
 				290633C31C662842007DFFA6 /* YTBasketTableViewController.m in Sources */,

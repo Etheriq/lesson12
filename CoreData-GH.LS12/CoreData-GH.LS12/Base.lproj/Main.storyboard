@@ -19,7 +19,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SUw-AT-X6Z" id="SNz-Tb-iG5">
-                                    <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6sE-ak-9nr">
@@ -59,11 +59,61 @@
                     <navigationItem key="navigationItem" title="Baskets" id="kXb-po-nXq"/>
                     <connections>
                         <outlet property="table" destination="2T3-V5-oQf" id="1tt-Qn-LP5"/>
+                        <segue destination="vGV-gW-zkv" kind="show" identifier="show_products" id="j5t-98-v6w"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fAz-La-2D9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="529" y="506"/>
+        </scene>
+        <!--Product View Controller-->
+        <scene sceneID="d9F-Wk-T39">
+            <objects>
+                <viewController storyboardIdentifier="productControllerIdentifier" id="98l-LF-hdW" customClass="YTProductViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0KM-Pf-gvC"/>
+                        <viewControllerLayoutGuide type="bottom" id="fiX-4B-NsR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="s8q-B8-TDs">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lBq-yC-d8I" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1264" y="-149"/>
+        </scene>
+        <!--Product Table View Controller-->
+        <scene sceneID="NuF-V5-hxl">
+            <objects>
+                <tableViewController id="vGV-gW-zkv" customClass="YTProductTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="bqC-EG-WrI">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="product_cell" id="rqN-nA-uDX">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rqN-nA-uDX" id="Qcb-co-NGz">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="vGV-gW-zkv" id="L0r-ey-cfm"/>
+                            <outlet property="delegate" destination="vGV-gW-zkv" id="cUY-RM-r36"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="table" destination="bqC-EG-WrI" id="YFd-Cr-IoG"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9C5-PO-ham" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1264" y="506"/>
         </scene>
         <!--Basket View Controller-->
         <scene sceneID="WBO-V1-Mrb">

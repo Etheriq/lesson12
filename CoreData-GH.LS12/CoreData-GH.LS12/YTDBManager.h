@@ -22,5 +22,6 @@
 
 - (NSArray *) getAllBaskets;
 -(void) removeAllBasckets;
+- (NSArray *) getProductsInBasketWithId:(NSManagedObjectID *) objectId;
 
 @end

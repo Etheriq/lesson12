@@ -10,12 +10,14 @@
 #import "YTDBManager.h"
 #import "YTBascketCell.h"
 #import "YTBasketViewController.h"
+#import "YTProductTableViewController.h"
 #import "YTBasket.h"
 
 @interface YTBasketTableViewController ()
 
 @property(strong, nonatomic) NSMutableArray *baskets;
 @property (strong, nonatomic) IBOutlet UITableView *table;
+@property (strong, nonatomic) id selectedBasketId;
 
 @end
 
@@ -31,7 +33,6 @@
     
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addBascket)];
-
 }
 
 -(void) viewDidAppear:(BOOL)animated {
@@ -60,7 +61,17 @@
     [self.navigationController pushViewController:basketController animated:YES];
 }
 
-#pragma mark - Table view data source
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    YTBasket *basket = [self.baskets objectAtIndex:indexPath.row];
+    self.selectedBasketId = basket.objectID;
+    
+    [self performSegueWithIdentifier:@"show_products" sender:nil];
+}
+
+#pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
@@ -115,14 +126,12 @@
 }
 */
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
+#pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+
+    YTProductTableViewController *vc = [segue destinationViewController];
+    vc.basketId = self.selectedBasketId;
 }
-*/
 
 @end
