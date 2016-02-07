@@ -9,6 +9,7 @@
 #import "YTProductTableViewController.h"
 #import "YTDBManager.h"
 #import "YTProductViewController.h"
+#import "YTProduct.h"
 
 @interface YTProductTableViewController ()
 
@@ -22,17 +23,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self refreshTable];
     self.navigationItem.title = @"Products";
     
     
     // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+     self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addProduct)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addProductWithProduct:)];
+}
+
+-(void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self refreshTable];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -49,14 +54,18 @@
 
 #pragma mark - Actions
 
--(void) addProduct {
+-(void) addProductWithProduct: (nullable YTProduct *) product {
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     YTProductViewController *productController = [sb instantiateViewControllerWithIdentifier:@"productControllerIdentifier"];
+    productController.basketID = self.basketId;
+    if ([product isKindOfClass:[YTProduct class]]) {
+        productController.product = product;
+    }
     
     [self.navigationController pushViewController:productController animated:YES];
 }
 
-#pragma mark - Table view data source
+#pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 
@@ -72,9 +81,20 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"product_cell" forIndexPath:indexPath];
     
-    // Configure the cell...
+    YTProduct *product = [self.products objectAtIndex:indexPath.row];
+    cell.textLabel.text = product.title;
     
     return cell;
+}
+
+
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    YTProduct *product = [self.products objectAtIndex:indexPath.row];
+    
+    [self addProductWithProduct:product];
 }
 
 

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "YTBasket.h"
 
 @interface YTDBManager : NSObject
 
@@ -23,5 +24,6 @@
 - (NSArray *) getAllBaskets;
 -(void) removeAllBasckets;
 - (NSArray *) getProductsInBasketWithId:(NSManagedObjectID *) objectId;
+-(YTBasket *) getBasketByID:(NSManagedObjectID *) objectId;
 
 @end

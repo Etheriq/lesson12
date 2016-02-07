@@ -35,8 +35,8 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addBascket)];
 }
 
--(void) viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
+-(void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     [self refreshTable];
 }
 

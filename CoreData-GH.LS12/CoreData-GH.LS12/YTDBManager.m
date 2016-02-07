@@ -78,16 +78,21 @@
     }
     
     return result;
+}
+
+-(YTBasket *) getBasketByID:(NSManagedObjectID *) objectId {
     
-    /*
-    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:[[CDProduct class] description]];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"basket = %@", self.basket.objectID];
-    request.predicate = predicate;
-    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
-    request.sortDescriptors = @[sortDescriptor];
-    return [context executeFetchRequest:request error:nil];
-    */
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    NSEntityDescription *description = [NSEntityDescription entityForName:[[YTBasket class] description] inManagedObjectContext:self.managedObjectContext];
+    [request setEntity:description];
     
+    NSError *error = nil;
+    YTBasket *result = nil;
+    if (!(result = [self.managedObjectContext existingObjectWithID:objectId error:&error])) {
+        NSLog(@"GetAll error: %@", [error localizedDescription]);
+    }
+    
+    return result;
 }
 
 #pragma mark - Core Data stack
@@ -164,6 +169,7 @@
             // Replace this implementation with code to handle the error appropriately.
             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+                        
             abort();
         }
     }

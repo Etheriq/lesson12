@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "YTProduct.h"
 
 @interface YTProductViewController : UIViewController
+
+@property(strong, nonatomic) id basketID;
+@property (strong, nonatomic) YTProduct *product;
 
 @end
