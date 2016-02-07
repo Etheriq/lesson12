@@ -200,7 +200,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2906338D1C6603C3007DFFA6 /* Build configuration list for PBXProject "CoreData-GH.LS12" */;
+			buildConfigurationList = 2906338D1C6603C3007DFFA6 /* Build configuration list for PBXProject "CoreData1" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -360,6 +360,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "CoreData-GH.LS12/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.learning.Objective-C.CoreData-GH-LS12";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -371,6 +372,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "CoreData-GH.LS12/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.learning.Objective-C.CoreData-GH-LS12";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -380,7 +382,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2906338D1C6603C3007DFFA6 /* Build configuration list for PBXProject "CoreData-GH.LS12" */ = {
+		2906338D1C6603C3007DFFA6 /* Build configuration list for PBXProject "CoreData1" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				290633AA1C6603C3007DFFA6 /* Debug */,

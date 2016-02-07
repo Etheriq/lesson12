@@ -83,7 +83,7 @@
     YTBascketCell *cell = [tableView dequeueReusableCellWithIdentifier:@"basketCell" forIndexPath:indexPath];
     YTBasket *basket = [self.baskets objectAtIndex:indexPath.row];
     cell.title.text = [NSString stringWithFormat:@"%@", basket.title];
-
+    cell.productCountLabel.text = [NSString stringWithFormat:@"%lu products", [basket.products count]];
     NSDateFormatter *format = [[NSDateFormatter alloc] init];
     [format setDateFormat:@"dd MMMM yyyy"];
     cell.createdAtDate.text = [NSString stringWithFormat:@"%@", [format stringFromDate:basket.createdAt]];
@@ -91,41 +91,22 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
+        YTBasket *basket = [self.baskets objectAtIndex:indexPath.row];
+        
+        [[YTDBManager Manager].managedObjectContext deleteObject:basket];
+        [[YTDBManager Manager] saveContext];
+        
+        [self refreshTable];
+    }
+}
 
-/*
-// Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

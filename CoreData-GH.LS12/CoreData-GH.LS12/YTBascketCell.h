@@ -12,5 +12,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *title;
 @property (weak, nonatomic) IBOutlet UILabel *createdAtDate;
+@property (weak, nonatomic) IBOutlet UILabel *productCountLabel;
 
 @end

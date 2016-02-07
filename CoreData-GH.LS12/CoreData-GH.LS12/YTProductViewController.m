@@ -40,20 +40,11 @@
     
     if (self.product) {
         self.titleField.text = _product.title;
-        self.stepperamount.value = [_product.amount floatValue];
+        self.stepperamount.value = [_product.amount doubleValue];
         self.priceField.text = [NSString stringWithFormat:@"%.2f", [_product.price floatValue]];
+        self.currentAmountLabel.text = [NSString stringWithFormat:@"%i", (int)self.stepperamount.value];
     }
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 #pragma mark - Actions
 
@@ -62,12 +53,12 @@
     NSManagedObjectContext *context = [YTDBManager Manager].managedObjectContext;
     if (!self.product) {
         self.product = [NSEntityDescription insertNewObjectForEntityForName:[[YTProduct class] description] inManagedObjectContext:context];
+        self.product.isPurchased = [NSNumber numberWithBool:NO];
     }
     
     self.product.title = self.titleField.text;
     self.product.amount = [NSNumber numberWithDouble:self.stepperamount.value];
     self.product.price = [NSDecimalNumber decimalNumberWithString:self.priceField.text];
-    self.product.isPurchased = [NSNumber numberWithBool:NO];
     self.product.basket = self.basket;
     
     NSError *error = nil;
